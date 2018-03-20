@@ -1,17 +1,25 @@
 import React from 'react';
-import { Provider } from 'react-redux'
-import { createStore } from 'redux'
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import registerServiceWorker from './registerServiceWorker';
-import reducer from './reducers/reducers'
 
-let store = createStore(reducer)
+import { Provider } from 'react-redux';
+import { createStore, combineReducers, applyMiddleware } from 'redux';
+import { BrowserRouter as Router } from 'react-router-dom';
+
+import reducer from './reducers/reducers';
+
+import './index.css';
+import { App } from './App';
+
+const store = createStore(reducer);
+
+const AppProvider = () => (
+  <Provider store={store}>
+    <App />
+  </Provider>
+);
 
 ReactDOM.render(
-    <Provider store={store}>
-        <App />
-    </Provider>,
+    <Router>
+      <AppProvider />
+    </Router>,
     document.getElementById('root'));
-registerServiceWorker();
