@@ -26,14 +26,14 @@ class MainPage extends Component {
   viewReports = () => { }
 
   render() {
-    const { browserLocation } = this.props;
+    const { browserLocation, userLocation } = this.props;
 
     const location = browserLocation && browserLocation.latitude && browserLocation.longitude ? `${browserLocation.latitude} ${browserLocation.longitude}` : 'Loading location...';
-
+    
     return (
       <div className="App">
         <Input
-          inputValue={location}
+          inputValue={userLocation}
           handleChange={this.handleChange}
         />
         <Button><Link to="/report">Report Incident</Link></Button>

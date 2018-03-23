@@ -21,11 +21,7 @@ const store = createStore(
       rootReducer,
       router: routerReducer
     }),
-    compose(
-        applyMiddleware(thunk, middleware, logger),
-        window.__REDUX_DEVTOOLS_EXTENSION__ &&
-        window.__REDUX_DEVTOOLS_EXTENSION__()
-    )
+    applyMiddleware(thunk, middleware, logger)
 );
 
 ReactDOM.render(
